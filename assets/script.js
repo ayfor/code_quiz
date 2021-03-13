@@ -4,7 +4,9 @@ var quizSectionElement = document.getElementById('quiz-section');
 var resultsSectionElement = document.getElementById('results-section');
 var highscoreSectionElement = document.getElementById('highscores-section');
 var timeRemainingElement = document.getElementById('time-remaining');
+
 var startButton = document.getElementById('start-button');
+var finalScoreElement = document.getElementById('final-score');
 
 //Get quiz questions
 var questionElements = quizSectionElement.children;
@@ -15,18 +17,18 @@ var score = 0;
 
 var quizQuestionCounter = 0;
 
+var timeInterval;
 
 //----------Function Declarations----------
 function startCountdown(){
-
-    var timeInterval = setInterval(function(){
+    timeRemaining = 60;
+    
+    timeInterval = setInterval(function(){
         if(timeRemaining >= 1){
             timeRemainingElement.textContent = timeRemaining + "s";
             timeRemaining--;
         }else{
             timeRemainingElement.textContent = '0' + 's';
-
-            clearInterval(timeInterval);
 
             endQuiz();
         }
@@ -59,7 +61,11 @@ function startQuiz(){
 function endQuiz(){
     console.log("Ending quiz...");
 
+    clearInterval(timeInterval);
+
     hideQuiz();
+
+    finalScoreElement.textContent = score;
 
     showResults();
 }
