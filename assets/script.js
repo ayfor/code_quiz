@@ -9,97 +9,6 @@ var timeRemaining = 90;
 
 var quizQuestionCounter = 0;
 
-var quizDataArray = [
-    {
-        question:'Commonly used data types DO NOTE include:',
-        answers:[
-            {
-                number: 1,
-                text:'Strings'
-            },
-            {
-                number: 2,
-                text:'Booleans'
-            },
-            {
-                number: 3,
-                text:'Alerts'
-            },
-            {
-                number: 4,
-                text:'Numbers'
-            },
-        ],
-        correctAnswer:3
-    },
-    {
-        question:'The condition in an if/else statement is enclosed within _____.',
-        answers:[
-            {
-                number: 1,
-                text:'Quotes'
-            },
-            {
-                number: 2,
-                text:'Curly Brackets'
-            },
-            {
-                number: 3,
-                text:'Parantheses'
-            },
-            {
-                number: 4,
-                text:'Square Brackets'
-            },
-        ],
-        correctAnswer:3
-    },
-    {
-        question:'Arrays in Javascript can be used to store _____.',
-        answers:[
-            {
-                number: 1,
-                text:'Numbers and Strings'
-            },
-            {
-                number: 2,
-                text:'Other arrays'
-            },
-            {
-                number: 3,
-                text:'Booleans'
-            },
-            {
-                number: 4,
-                text:'All of the above.'
-            },
-        ],
-        correctAnswer:4
-    },
-    {
-        question:'String values must be enclosed within _____ when being assigned to variables.',
-        answers:[
-            {
-                number: 1,
-                text:'Commas'
-            },
-            {
-                number: 2,
-                text:'Curly Brackets'
-            },
-            {
-                number: 3,
-                text:'Quotes'
-            },
-            {
-                number: 4,
-                text:'Parentheses'
-            },
-        ],
-        correctAnswer:1
-    }
-]
-
 
 //----------Function Declarations----------
 function countdown(){
@@ -123,14 +32,12 @@ function displayStartPage(){
     quizSectionElement.style.display = 'none';
 }
 
-function startQuiz(){
-
+function answerQuestion(event){
+    console.log(event.target.textContent)
 }
 
 //-----Helper Functions-----
-function generateQuizQuestion(){
-    
-}
+
 
 function showHighScores(){
     highscoreSectionElement.style.display = 'block';
@@ -148,6 +55,8 @@ startButton.addEventListener("click", function(){
     countdown();
     //startQuiz();
 });
+
+quizSectionElement.addEventListener("click", answerQuestion)
 
 //----------Starting Functions----------
 
