@@ -10,6 +10,7 @@ var finalScoreElement = document.getElementById('final-score');
 
 var startpageLink = document.getElementById('display-startpage-button');
 var submitResultsLink = document.getElementById('submit-results-button');
+var resetScoresButton = document.getElementById('reset-scores-button');
 
 var highscoreInput = document.getElementById('highscore-input-element');
 var highscoresLink = document.getElementById('highscores-link');
@@ -53,6 +54,7 @@ function startQuiz(){
     console.log("Starting quiz...");
 
     score = 0;
+    quizQuestionCounter = 0;
 
     //Hide starting page
     hideStartingSection();
@@ -70,6 +72,7 @@ function startQuiz(){
 
 function endQuiz(){
     console.log("Ending quiz...");
+
 
     clearInterval(timeInterval);
 
@@ -132,8 +135,27 @@ function goToHighScores() {
 
 function submitResults(){
     console.log(highscoreInput.value);
+
+    //Create list element for highscores page
+    var enteredInitials = highscoreInput.value;
+
+    var highscoreText = enteredInitials + ": " + score;
+
+    //Create list element
+    var listItemElement = document.createElement("li");
+
+    listItemElement.textContent = highscoreText;
+
+    highscoresList.appendChild(listItemElement);
+
+    localStorage.setItem(enteredInitials,String(score));
+    
+    goToHighScores();
 }
 
+function resetScores(){
+    highscoresList.innerHTML = '';
+}
 //-----Helper Functions-----
 function displayQuizQuestion(questionNumber){
     for(var i = 0; i < questionElements.length; i++){
@@ -186,6 +208,8 @@ highscoresLink.addEventListener("click",goToHighScores);
 startpageLink.addEventListener('click', displayStartPage);
 
 submitResultsLink.addEventListener('click', submitResults)
+
+resetScoresButton.addEventListener('click', resetScores)
 //----------Starting Functions----------
 
 displayStartPage();
