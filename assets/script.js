@@ -53,6 +53,7 @@ function displayStartPage(){
 function startQuiz(){
     console.log("Starting quiz...");
 
+    //reset quiz instance-specific variables
     score = 0;
     quizQuestionCounter = 0;
 
@@ -73,13 +74,16 @@ function startQuiz(){
 function endQuiz(){
     console.log("Ending quiz...");
 
-
+    //kill the timer (interval)
     clearInterval(timeInterval);
 
+    //hide the quiz html
     hideQuiz();
 
+    //update results page with new score
     finalScoreElement.textContent = score;
 
+    //show the results html
     showResults();
 }
 
@@ -89,8 +93,11 @@ function answerQuestion(event){
     console.log('Result: ' + event.target.dataset.correct)
 
     if(event.target.dataset.correct){
+        //get value to tell if selected answer is the correct via data attribute
         var correctAnswer = (event.target.dataset.correct === "true");
 
+        //add score if correct answer and add time
+        //else take time away
         if(correctAnswer){
             //User guessed the right answer
             //Add to score
@@ -119,17 +126,21 @@ function answerQuestion(event){
 
 }
 
+//navigates users to high scores by hiding and showing relevant html
 function goToHighScores() {
     console.log("Navigating to highscores...");
 
+    //ends any active quiz
     endQuiz();
 
+    //hide html
     hideStartingSection();
 
     hideResults();
 
     hideQuiz();
 
+    //show html
     showHighScores();
 }
 
@@ -139,17 +150,19 @@ function submitResults(){
     //Create list element for highscores page
     var enteredInitials = highscoreInput.value;
 
+    //create text for the list item
     var highscoreText = enteredInitials + ": " + score;
 
     //Create list element
     var listItemElement = document.createElement("li");
 
+    //set new list item content to custom text
     listItemElement.textContent = highscoreText;
 
+    //append the new list item to the 
     highscoresList.appendChild(listItemElement);
 
-    localStorage.setItem(enteredInitials,String(score));
-    
+    //move users to high score page
     goToHighScores();
 }
 
