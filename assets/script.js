@@ -16,6 +16,9 @@ var highscoreInput = document.getElementById('highscore-input-element');
 var highscoresLink = document.getElementById('highscores-link');
 var highscoresList = document.getElementById('highscores-list');
 
+var correctMessage = document.getElementById('correct');
+var incorrectMessage = document.getElementById('incorrect');
+
 //Get quiz questions
 var questionElements = quizSectionElement.children;
 
@@ -44,10 +47,12 @@ function startCountdown(){
 }
 
 function displayStartPage(){
-    highscoreSectionElement.style.display = 'none';
-    quizSectionElement.style.display = 'none';
-    resultsSectionElement.style.display = 'none';
-    startingSectionElement.style = 'flex';
+    showStartingSection();
+    hideQuiz();
+    hideResults();
+    hideHighScores();
+
+
 }
 
 function startQuiz(){
@@ -92,6 +97,9 @@ function answerQuestion(event){
     console.log('Answer Selected: '+ event.target.textContent)
     console.log('Result: ' + event.target.dataset.correct)
 
+    hideCorrect();
+    hideIncorrect();
+
     if(event.target.dataset.correct){
         //get value to tell if selected answer is the correct via data attribute
         var correctAnswer = (event.target.dataset.correct === "true");
@@ -104,11 +112,13 @@ function answerQuestion(event){
             score +=10;
             //Add to time
             timeRemaining += 5;
+            showCorrect();
         }else{
             //User guessed the wrong answer
             //Do not add to score
             //Subtract from time
             timeRemaining -= 5;
+            showIncorrect();
         }
 
         //Check if quiz is over
@@ -210,7 +220,26 @@ function showQuiz(){
 
 function hideQuiz(){
     quizSectionElement.style.display = 'none';
+    hideCorrect()
+    hideIncorrect()
 }
+
+function showCorrect(){
+    correctMessage.style.display = 'flex';
+}
+
+function hideCorrect(){
+    correctMessage.style.display = 'none';
+}
+
+function showIncorrect(){
+    incorrectMessage.style.display = 'flex';
+}
+
+function hideIncorrect(){
+    incorrectMessage.style.display = 'none';
+}
+
 //----------Event Listeners----------
 startButton.addEventListener("click", startQuiz);
 
