@@ -32,3 +32,9 @@ section{
 button{
     width: fit-content;
 }
+
+.quiz-question button{
+    display: block;
+    margin:5px;
+    margin-left: 10%;
+}

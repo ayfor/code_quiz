@@ -11,115 +11,93 @@ var quizQuestionCounter = 0;
 
 var quizDataArray = [
     {
-        question:'',
+        question:'Commonly used data types DO NOTE include:',
         answers:[
             {
                 number: 1,
-                text:';'
+                text:'Strings'
             },
             {
                 number: 2,
-                text:';'
+                text:'Booleans'
             },
             {
                 number: 3,
-                text:';'
+                text:'Alerts'
             },
             {
                 number: 4,
-                text:';'
+                text:'Numbers'
             },
         ],
-        correctAnswer:0
+        correctAnswer:3
     },
     {
-        question:'',
+        question:'The condition in an if/else statement is enclosed within _____.',
         answers:[
             {
                 number: 1,
-                text:';'
+                text:'Quotes'
             },
             {
                 number: 2,
-                text:';'
+                text:'Curly Brackets'
             },
             {
                 number: 3,
-                text:';'
+                text:'Parantheses'
             },
             {
                 number: 4,
-                text:';'
+                text:'Square Brackets'
             },
         ],
-        correctAnswer:0
+        correctAnswer:3
     },
     {
-        question:'',
+        question:'Arrays in Javascript can be used to store _____.',
         answers:[
             {
                 number: 1,
-                text:';'
+                text:'Numbers and Strings'
             },
             {
                 number: 2,
-                text:';'
+                text:'Other arrays'
             },
             {
                 number: 3,
-                text:';'
+                text:'Booleans'
             },
             {
                 number: 4,
-                text:';'
+                text:'All of the above.'
             },
         ],
-        correctAnswer:0
+        correctAnswer:4
     },
     {
-        question:'',
+        question:'String values must be enclosed within _____ when being assigned to variables.',
         answers:[
             {
                 number: 1,
-                text:';'
+                text:'Commas'
             },
             {
                 number: 2,
-                text:';'
+                text:'Curly Brackets'
             },
             {
                 number: 3,
-                text:';'
+                text:'Quotes'
             },
             {
                 number: 4,
-                text:';'
+                text:'Parentheses'
             },
         ],
-        correctAnswer:0
-    },
-    {
-        question:'',
-        answers:[
-            {
-                number: 1,
-                text:';'
-            },
-            {
-                number: 2,
-                text:';'
-            },
-            {
-                number: 3,
-                text:';'
-            },
-            {
-                number: 4,
-                text:';'
-            },
-        ],
-        correctAnswer:0
-    },
+        correctAnswer:1
+    }
 ]
 
 
@@ -145,7 +123,15 @@ function displayStartPage(){
     quizSectionElement.style.display = 'none';
 }
 
+function startQuiz(){
+
+}
+
 //-----Helper Functions-----
+function generateQuizQuestion(){
+    
+}
+
 function showHighScores(){
     highscoreSectionElement.style.display = 'block';
 }
@@ -164,5 +150,6 @@ startButton.addEventListener("click", function(){
 });
 
 //----------Starting Functions----------
-displayStartPage();
+
+//displayStartPage();
 
