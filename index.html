@@ -12,7 +12,7 @@
 <body>
     <nav>
         <div class="navbar-item">
-           <a href="#">View Highscores</a></li> 
+           <a href="#" id="highscores-link">View Highscores</a></li> 
         </div>
         <div class="navbar-item">
            <p>Time: <span id="time-remaining"></span></p> 
@@ -60,13 +60,17 @@
         <div>
             <label for="highscore-input">Enter Initials: </label>
             <input type="text" name="highscore-input" id="highscore-input-element">
-            <button>Submit Results</button>
+            <button id="submit-results-button">Submit Results</button>
         </div>
         
     </section>
     <section id="highscores-section">
         <h1>Highscores:</h1>
-        <ul></ul>
+        <ul id="highscores-list">
+            <li>Sample: Text</li>
+        </ul>
+        <button id="display-startpage-button">Go Home</button>
+
     </section>
     <!-- <section id="answer-feedback-section">
         <div id="correct" class="result">

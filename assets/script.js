@@ -8,6 +8,13 @@ var timeRemainingElement = document.getElementById('time-remaining');
 var startButton = document.getElementById('start-button');
 var finalScoreElement = document.getElementById('final-score');
 
+var startpageLink = document.getElementById('display-startpage-button');
+var submitResultsLink = document.getElementById('submit-results-button');
+
+var highscoreInput = document.getElementById('highscore-input-element');
+var highscoresLink = document.getElementById('highscores-link');
+var highscoresList = document.getElementById('highscores-list');
+
 //Get quiz questions
 var questionElements = quizSectionElement.children;
 
@@ -22,7 +29,7 @@ var timeInterval;
 //----------Function Declarations----------
 function startCountdown(){
     timeRemaining = 60;
-    
+
     timeInterval = setInterval(function(){
         if(timeRemaining >= 1){
             timeRemainingElement.textContent = timeRemaining + "s";
@@ -39,10 +46,13 @@ function displayStartPage(){
     highscoreSectionElement.style.display = 'none';
     quizSectionElement.style.display = 'none';
     resultsSectionElement.style.display = 'none';
+    startingSectionElement.style = 'flex';
 }
 
 function startQuiz(){
     console.log("Starting quiz...");
+
+    score = 0;
 
     //Hide starting page
     hideStartingSection();
@@ -106,6 +116,24 @@ function answerQuestion(event){
 
 }
 
+function goToHighScores() {
+    console.log("Navigating to highscores...");
+
+    endQuiz();
+
+    hideStartingSection();
+
+    hideResults();
+
+    hideQuiz();
+
+    showHighScores();
+}
+
+function submitResults(){
+    console.log(highscoreInput.value);
+}
+
 //-----Helper Functions-----
 function displayQuizQuestion(questionNumber){
     for(var i = 0; i < questionElements.length; i++){
@@ -151,8 +179,13 @@ function hideQuiz(){
 //----------Event Listeners----------
 startButton.addEventListener("click", startQuiz);
 
-quizSectionElement.addEventListener("click", answerQuestion)
+quizSectionElement.addEventListener("click", answerQuestion);
 
+highscoresLink.addEventListener("click",goToHighScores);
+
+startpageLink.addEventListener('click', displayStartPage);
+
+submitResultsLink.addEventListener('click', submitResults)
 //----------Starting Functions----------
 
 displayStartPage();
