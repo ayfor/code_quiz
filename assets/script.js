@@ -176,12 +176,6 @@ function submitResults(){
     highscoreIndex = String(localStorage.length+1);
     localStorage.setItem(highscoreIndex, highscoreText);
 
-    //Logging 
-    for (let index = 1; index <= localStorage.length; index++) {
-        const element = localStorage.getItem[index];
-        console.log(element);
-    }
-
     //move users to high score page
     goToHighScores();
 }
@@ -189,9 +183,12 @@ function submitResults(){
 function importScores(){
     for (let index = 1; index <= localStorage.length; index++) {
         const element = localStorage.getItem(index);
-        let listItemElement = document.createElement("li");
-        listItemElement.textContent = element;
-        highscoresList.appendChild(listItemElement);
+        if(element){
+            let listItemElement = document.createElement("li");
+            listItemElement.textContent = element;
+            highscoresList.appendChild(listItemElement); 
+        }
+        
     }
 }
 
