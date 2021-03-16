@@ -149,7 +149,7 @@ function goToHighScores() {
     hideResults();
 
     hideQuiz();
-
+    
     //show html
     showHighScores();
 }
@@ -169,15 +169,35 @@ function submitResults(){
     //set new list item content to custom text
     listItemElement.textContent = highscoreText;
 
-    //append the new list item to the 
+    //append the new list item to the ui list
     highscoresList.appendChild(listItemElement);
+
+    //save the item in local storage
+    highscoreIndex = String(localStorage.length+1);
+    localStorage.setItem(highscoreIndex, highscoreText);
+
+    //Logging 
+    for (let index = 1; index <= localStorage.length; index++) {
+        const element = localStorage.getItem[index];
+        console.log(element);
+    }
 
     //move users to high score page
     goToHighScores();
 }
 
+function importScores(){
+    for (let index = 1; index <= localStorage.length; index++) {
+        const element = localStorage.getItem(index);
+        let listItemElement = document.createElement("li");
+        listItemElement.textContent = element;
+        highscoresList.appendChild(listItemElement);
+    }
+}
+
 function resetScores(){
     highscoresList.innerHTML = '';
+    localStorage.clear();
 }
 //-----Helper Functions-----
 function displayQuizQuestion(questionNumber){
@@ -256,4 +276,4 @@ resetScoresButton.addEventListener('click', resetScores)
 
 displayStartPage();
 
-
+importScores();
