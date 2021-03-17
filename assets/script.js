@@ -51,8 +51,6 @@ function displayStartPage(){
     hideQuiz();
     hideResults();
     hideHighScores();
-
-
 }
 
 function startQuiz(){
@@ -188,7 +186,6 @@ function importScores(){
             listItemElement.textContent = element;
             highscoresList.appendChild(listItemElement); 
         }
-        
     }
 }
 
