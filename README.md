@@ -6,3 +6,5 @@ If the timer runs out completely, the quiz ends. When the quiz ends the user is 
 Here is a link to the live application: https://ayfor.github.io/code_quiz/
 
 ![Screenshot of starting page for code quiz.](./assets/images/Screenshot.png)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
